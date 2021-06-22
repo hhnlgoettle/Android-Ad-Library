@@ -1,0 +1,3 @@
+rootProject.name = "InteractionRewardingAdsAndroidLib"
+include ':app'
+include ':AdLib'
