@@ -3,7 +3,9 @@
     package="engineer.trustmeimansoftware.adlib">
 
     <application>
-        <activity android:name=".AdFullscreenActivity"></activity>
+        <activity
+            android:name=".AdFullscreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
     </application>
 
 </manifest>
