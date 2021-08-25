@@ -7,6 +7,7 @@ import engineer.trustmeimansoftware.adlib.AdManager
 import engineer.trustmeimansoftware.adlib.IAdManager
 import engineer.trustmeimansoftware.adlib.ad.AdRequest
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
 
 class TestActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class TestActivity : AppCompatActivity() {
         const val optCustomAdFullscreenBuilder = "EXTRA_CUSTOM_AD_FULLSCREEN_BUILDER"
         const val optCustomJSInterfaceBuilder = "EXTRA_CUSTOM_JS_BUILDER"
         const val optCustomNetworkManager = "EXTRA_CUSTOM_NETWORK_MANAGER"
+        const val optOfflineCacheManager = "EXTRA_OFFLINE_CACHE_MANAGER"
         const val TAG ="TestActivity"
     }
 
@@ -47,12 +49,18 @@ class TestActivity : AppCompatActivity() {
                 val networkManager = TestAdNetworkManager()
                 AdManager.instance?.networkManager = networkManager
             }
+            if(it.extras?.getBoolean(optOfflineCacheManager) == true) {
+                Log.d(TAG, "use custom CacheManager")
+                val cacheManager = OfflineCacheManager()
+                AdManager.instance?.cacheManager = cacheManager
+            }
+
 
         }
     }
 
     fun loadAd(loadCallback: AdLoadCallback) {
-        val adRequest = AdRequest("publisherID", "displayID", arrayOf<String>())
+        val adRequest = AdRequest("publisherID", "appId", "displayID", arrayOf<String>())
         InteractionRewardedAd.load(this, adRequest, loadCallback)
     }
 

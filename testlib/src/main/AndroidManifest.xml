@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
+        <meta-data android:name="ira_appId" android:value="6123df0155456a00388a9d54" />
         <activity android:name=".TestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
         <activity android:name="engineer.trustmeimansoftware.adlib.AdFullscreenActivity"

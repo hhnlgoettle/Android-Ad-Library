@@ -1,6 +1,6 @@
 package engineer.trustmeimansoftware.adlib.stats
 
-import android.util.Log
+import com.google.gson.Gson
 import engineer.trustmeimansoftware.adlib.jsonutil.JSONUtil
 import org.json.JSONObject
 
@@ -34,13 +34,18 @@ data class ImpressionStats(
             val adInteractionArray: MutableList<AdInteraction> = mutableListOf()
             for (i in 0 until jsonArray.length()) {
                 val jsonItem = jsonArray.getJSONObject(i)
-                val timestamp = JSONUtil.readNullableLong(jsonObj, "timestamp", null)
-                val posX = JSONUtil.readNullableLong(jsonObj, "posX", null)
-                val posY = JSONUtil.readNullableLong(jsonObj, "posY", null)
-                val target = JSONUtil.readNullableString(jsonObj, "target", null)
+                val timestamp = JSONUtil.readNullableLong(jsonItem, "timestamp", null)
+                val posX = JSONUtil.readNullableLong(jsonItem, "posX", null)
+                val posY = JSONUtil.readNullableLong(jsonItem, "posY", null)
+                val target = JSONUtil.readNullableString(jsonItem, "target", null)
                 adInteractionArray.add(AdInteraction(timestamp, posX, posY, target))
             }
             return adInteractionArray.toTypedArray()
+        }
+
+        fun toJSONString(impressionStats: ImpressionStats): String {
+            var gson = Gson()
+            return gson.toJson(impressionStats);
         }
     }
 }

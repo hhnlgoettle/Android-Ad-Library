@@ -8,6 +8,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
 import engineer.trustmeimansoftware.adlib.AdManager
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import engineer.trustmeimansoftware.interactionrewardingads.testlib.util.AdManagerUtil
 import org.junit.Test
@@ -26,6 +27,7 @@ class JavaScriptInterfaceE2ETest {
         val scenario: ActivityScenario<TestWebviewActivity> =
             ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->
+            AdManager.instance!!.cacheManager = OfflineCacheManager();
             val adManager = AdManagerUtil(AdManager.instance!!)
             val jsBuilder = TestJavaScriptInterfaceBuilder()
             jsBuilder.onCloseCb = { result: String ->
@@ -64,6 +66,7 @@ class JavaScriptInterfaceE2ETest {
         val scenario: ActivityScenario<TestWebviewActivity> =
             ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->
+            AdManager.instance!!.cacheManager = OfflineCacheManager();
             val adManager = AdManagerUtil(AdManager.instance!!)
             val jsBuilder = TestJavaScriptInterfaceBuilder()
             jsBuilder.onCloseCb = { result: String ->
@@ -111,6 +114,7 @@ class JavaScriptInterfaceE2ETest {
         val scenario: ActivityScenario<TestWebviewActivity> =
             ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->
+            AdManager.instance!!.cacheManager = OfflineCacheManager();
             val adManager = AdManagerUtil(AdManager.instance!!)
             val jsBuilder = TestJavaScriptInterfaceBuilder()
             jsBuilder.onCloseCb = { result: String ->

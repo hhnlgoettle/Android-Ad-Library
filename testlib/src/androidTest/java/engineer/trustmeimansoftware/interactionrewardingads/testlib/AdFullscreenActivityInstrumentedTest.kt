@@ -1,4 +1,4 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.interactionrewardingads.testlib
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,12 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.AdManager
 import engineer.trustmeimansoftware.adlib.ad.FullscreenAd
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
+import engineer.trustmeimansoftware.interactionrewardingads.testlib.util.Setup
 import junit.framework.TestCase.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -91,7 +94,11 @@ class AdFullscreenActivityInstrumentedTest {
     @Test
     fun launchActivityWithAdManagerAndAdWithInvalidPath_throwsError() {
         // activity is only needed if we want to create an activity through the adManager
-        AdManager.build(null)
+        // Context of the app under test.
+        val scenarioIntent = Setup.setupScenarioIntent(
+            arrayOf()
+        )
+        val scenario: ActivityScenario<TestActivity> = ActivityScenario.launch(scenarioIntent)
         val ad = InteractionRewardedAd("myID", "someURL")
 
         var callbackCalled = false
@@ -111,7 +118,7 @@ class AdFullscreenActivityInstrumentedTest {
         val bundle = Bundle()
         bundle.putString("EXTRA_AD_ID", "myID")
         intent.putExtras(bundle)
-        val scenario = ActivityScenario.launch<AdFullscreenActivity>(intent)
+        ActivityScenario.launch<AdFullscreenActivity>(intent)
         assertEquals(
             scenario.result.resultData.getStringExtra("EXTRA_ERROR_MESSAGE"),
             "ad creative does not exists at path: someURL"
@@ -121,5 +128,6 @@ class AdFullscreenActivityInstrumentedTest {
             "myID"
         )
         assertEquals(callbackCalled, true)
+
     }
 }

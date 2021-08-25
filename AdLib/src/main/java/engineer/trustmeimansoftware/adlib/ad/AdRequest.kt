@@ -7,7 +7,7 @@ import engineer.trustmeimansoftware.adlib.AdManager
  *
  * used to request an ad from the AdWebServer
  */
-class AdRequest(val publisherId: String, val displayId: String, val cachedAds: Array<String>, var type: String? = null) {
+class AdRequest(val publisherId: String, val appId: String, val displayId: String, val cachedAds: Array<String>, var type: String? = null) {
 
     companion object {
         /**
@@ -20,7 +20,7 @@ class AdRequest(val publisherId: String, val displayId: String, val cachedAds: A
             AdManager.instance?.cacheManager?.getCachedAdIDs()?.let {
                 cachedAds = it
             }
-            return AdRequest("mockPublisherID", displayID, cachedAds)
+            return AdRequest("", AdManager.instance!!.appId!!, displayID, cachedAds)
         }
     }
 }

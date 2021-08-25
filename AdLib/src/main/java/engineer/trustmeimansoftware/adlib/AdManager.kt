@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleObserver
 import engineer.trustmeimansoftware.adlib.cache.CacheManager
+import engineer.trustmeimansoftware.adlib.cache.ICacheManager
+import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.jsinterface.IJavaScriptInterfaceBuilder
 import engineer.trustmeimansoftware.adlib.jsinterface.JavaScriptInterfaceBuilder
 import engineer.trustmeimansoftware.adlib.network.AdNetworkManager
 import engineer.trustmeimansoftware.adlib.network.IAdNetworkManager
 import engineer.trustmeimansoftware.adlib.network.OfflineAdNetworkManager
 import engineer.trustmeimansoftware.adlib.registry.AdRegistry
+import engineer.trustmeimansoftware.adlib.util.AppId
 
 /**
  * @class AdManager
@@ -17,14 +20,16 @@ import engineer.trustmeimansoftware.adlib.registry.AdRegistry
  * holds refs to all relevant Ad related classes
  */
 class AdManager: IAdManager {
+    override var baseUrl: String = "https://ads.trustmeimansoftware.engineer"
     override var context: Context? = null
 
     override var adFullscreenActivityBuilder: IAdFullscreenActivityBuilder? = null
     override var adRegistry: AdRegistry? = null
-    override var cacheManager: CacheManager? = null
+    override var cacheManager: ICacheManager? = null
     override var jsInterfaceBuilder: IJavaScriptInterfaceBuilder? = null
     override var networkManager: IAdNetworkManager? = null
 
+    override var appId: String? = null
     /**
      * initialize()
      */
@@ -35,14 +40,15 @@ class AdManager: IAdManager {
     override fun initialize(activity: AppCompatActivity?, buildOpts: AdManagerBuildOpts) {
         if (activity != null) {
             context = activity.applicationContext
+            appId = AppId.getAppIdFromContext(context!!)
         }
         activity?.let {
             adFullscreenActivityBuilder = AdFullscreenActivityBuilder(activity)
         }
         adRegistry = AdRegistry()
-        cacheManager = CacheManager()
         jsInterfaceBuilder = JavaScriptInterfaceBuilder()
         networkManager = if(buildOpts.offlineMode) OfflineAdNetworkManager() else AdNetworkManager()
+        cacheManager = if(buildOpts.offlineMode) OfflineCacheManager() else CacheManager()
     }
 
 
