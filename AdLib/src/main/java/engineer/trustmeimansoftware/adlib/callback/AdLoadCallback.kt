@@ -1,6 +1,5 @@
 package engineer.trustmeimansoftware.adlib.callback
 
-import android.util.Log
 import engineer.trustmeimansoftware.adlib.ad.Ad
 import java.lang.Error
 

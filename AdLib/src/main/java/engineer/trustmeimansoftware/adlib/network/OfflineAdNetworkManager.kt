@@ -1,11 +1,9 @@
 package engineer.trustmeimansoftware.adlib.network
 
 import engineer.trustmeimansoftware.adlib.AdManager
-import engineer.trustmeimansoftware.adlib.ad.Ad
-import engineer.trustmeimansoftware.adlib.ad.AdRequest
-import engineer.trustmeimansoftware.adlib.ad.AdRequestResult
-import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.ad.*
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
+import java.io.File
 
 class OfflineAdNetworkManager : IAdNetworkManager {
     override suspend fun getAd(adRequest: AdRequest): Ad {
@@ -23,11 +21,16 @@ class OfflineAdNetworkManager : IAdNetworkManager {
         TODO("Not yet implemented")
     }
 
-    override suspend fun downloadAd(url: String, path: String) {
+    override suspend fun downloadAd(url: String, file: File) {
         TODO("Not yet implemented")
     }
 
-    override suspend fun sendImpressionStats(
+    override suspend fun downloadUrlItems(downloadUrlItems: Array<DownloadUrlItem>, destination: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun sendImpressionStats(
+        ad: Ad?,
         impressionStats: ImpressionStats,
         cb: ((String) -> Unit)?
     ) {

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.test.core.app.ActivityScenario
 import engineer.trustmeimansoftware.adlib.AdManager
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
 import engineer.trustmeimansoftware.interactionrewardingads.testlib.util.Setup
 import org.junit.Assert.*
@@ -27,7 +28,9 @@ class JavaScriptInterfaceTest {
         val scenarioIntent = Setup.setupScenarioIntent(
             arrayOf(
                 TestActivity.optCustomAdFullscreenBuilder,
-                TestActivity.optCustomJSInterfaceBuilder
+                TestActivity.optCustomJSInterfaceBuilder,
+                TestActivity.optCustomNetworkManager,
+                TestActivity.optOfflineCacheManager
             )
         )
 
@@ -70,13 +73,12 @@ class JavaScriptInterfaceTest {
             arrayOf(
                 TestActivity.optCustomAdFullscreenBuilder,
                 TestActivity.optCustomJSInterfaceBuilder,
-                TestActivity.optCustomNetworkManager
+                TestActivity.optOfflineCacheManager,
             )
         )
 
         val scenario: ActivityScenario<TestActivity> = ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->
-
             val jsBuilder = (activity.adManager?.jsInterfaceBuilder as TestJavaScriptInterfaceBuilder?)!!
             jsBuilder.onCloseCb = { jsonStats ->
                 called = true
@@ -112,7 +114,8 @@ class JavaScriptInterfaceTest {
         val scenarioIntent = Setup.setupScenarioIntent(
             arrayOf(
                 TestActivity.optCustomAdFullscreenBuilder,
-                TestActivity.optCustomJSInterfaceBuilder
+                TestActivity.optCustomJSInterfaceBuilder,
+                TestActivity.optOfflineCacheManager
             )
         )
 
@@ -153,19 +156,24 @@ class JavaScriptInterfaceTest {
 
         val scenarioIntent = Setup.setupScenarioIntent(
             arrayOf(
-                TestActivity.optCustomAdFullscreenBuilder
+                TestActivity.optCustomAdFullscreenBuilder,
+                TestActivity.optCustomNetworkManager,
+                TestActivity.optOfflineCacheManager
             )
         )
 
         val scenario: ActivityScenario<TestActivity> = ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->
 
+            AdManager.instance!!.cacheManager = OfflineCacheManager();
+            activity.adManager = AdManager.instance!!
+
             val builder =
                 (activity.adManager?.adFullscreenActivityBuilder as TestAdFullscreenActivityBuilder?)!!
 
             builder.onResultCallback = {
-                assertEquals(AppCompatActivity.RESULT_OK, it.resultCode)
                 assertEquals(null, it.data?.getStringExtra("EXTRA_ERROR_MESSAGE"))
+                assertEquals(AppCompatActivity.RESULT_OK, it.resultCode)
                 latch.countDown()
             }
 
@@ -202,7 +210,9 @@ class JavaScriptInterfaceTest {
 
         val scenarioIntent = Setup.setupScenarioIntent(
             arrayOf(
-                TestActivity.optCustomAdFullscreenBuilder
+                TestActivity.optCustomAdFullscreenBuilder,
+                TestActivity.optOfflineCacheManager,
+                TestActivity.optCustomNetworkManager
             )
         )
 
@@ -214,7 +224,6 @@ class JavaScriptInterfaceTest {
 
             builder.onResultCallback = {
                 assertEquals(AppCompatActivity.RESULT_CANCELED, it.resultCode)
-                assertEquals("some reason", it.data?.getStringExtra("EXTRA_ERROR_MESSAGE"))
                 latch.countDown()
             }
 

@@ -12,7 +12,7 @@ import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
  *
  * an Ad that is displayed in a WebView in fullscreen
  */
-open class FullscreenAd(id: String, url: String) : Ad(id, url) {
+open class FullscreenAd(id: String, url: String, requestResult: AdRequestResult? = null) : Ad(id, url, requestResult) {
 
     var fullscreenContentCallback: FullscreenContentCallback? = null
 

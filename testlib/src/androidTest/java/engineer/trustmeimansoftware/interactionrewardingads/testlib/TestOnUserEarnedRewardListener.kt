@@ -28,7 +28,8 @@ class OnUserEarnedRewardListenerTest {
         val latch = CountDownLatch(1)
 
         val scenarioIntent = Setup.setupScenarioIntent(
-            arrayOf()
+            arrayOf(TestActivity.optOfflineCacheManager,
+                TestActivity.optCustomNetworkManager)
         )
         val scenario: ActivityScenario<TestActivity> = ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->

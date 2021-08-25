@@ -15,8 +15,9 @@ import engineer.trustmeimansoftware.adlib.callback.OnUserRewardedListener
 class InteractionRewardedAd(id: String,
                             url: String,
                             var rewardType: String = "Rewards",
-                            var rewardAmount: Long = 10L
-) : FullscreenAd(id, url) {
+                            var rewardAmount: Long = 10L,
+                            requestResult: AdRequestResult? = null
+) : FullscreenAd(id, url, requestResult) {
     var onUserRewardedListener: OnUserRewardedListener? = null
 
     /**

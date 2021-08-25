@@ -36,5 +36,13 @@ class JSONUtil {
             return jsonObj.getJSONArray(key)
         }
 
+        fun jsonArrayToStringArray(jsonArray: JSONArray): Array<String> {
+            val array = ArrayList<String>();
+            for (i in 0 until jsonArray.length()) {
+                array.add(jsonArray.getString(i))
+            }
+            return array.toTypedArray()
+        }
+
     }
 }

@@ -60,12 +60,13 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
         ad?.let {
             val webSettings: WebSettings = webview.settings
             webSettings.javaScriptEnabled = true
+            webSettings.domStorageEnabled = true
 
             // Force links and redirects to open in the WebView instead of in a browser
 
             // Force links and redirects to open in the WebView instead of in a browser
             webview.webViewClient = WebViewClient()
-
+            WebView.setWebContentsDebuggingEnabled(true);
             // allow auto play of video elements
             // https://stackoverflow.com/questions/38975229/auto-play-video-in-webview
             webview.settings.mediaPlaybackRequiresUserGesture = false
@@ -98,6 +99,7 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
                     }
                     ad?.onUserRewardedListener?.onRewardEarned(rewards.toTypedArray())
                 }
+                AdManager.instance?.networkManager?.sendImpressionStats(ad, stats)
             }
             this.cleanupWebview()
             onFinishData.putExtra("EXTRA_AD_ID", adID)

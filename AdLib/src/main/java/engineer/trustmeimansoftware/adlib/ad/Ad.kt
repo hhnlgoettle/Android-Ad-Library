@@ -14,7 +14,7 @@ import kotlinx.coroutines.*
  * @param id - the unique id of the ad
  * @param path - where to find the ad
  */
-open class Ad(private val id: String, var path: String) {
+open class Ad(private val id: String, var path: String, var requestResult: AdRequestResult? = null) {
 
     fun getID(): String {
         return id
@@ -31,7 +31,6 @@ open class Ad(private val id: String, var path: String) {
             // this will cancel the job when the lifecycle owner aka the activity stops
             activity.lifecycleScope.launch {
                 withContext(Dispatchers.IO) {
-                        // TODO load ad with AdNetworkManager
                     try {
                         val ad = AdManager.instance?.networkManager?.getAd(adRequest)
                         if (ad != null) {
@@ -45,7 +44,7 @@ open class Ad(private val id: String, var path: String) {
                         }
                     } catch (e: Exception) {
                         activity.runOnUiThread {
-                            adLoadCallback.onAdFailedToLoad(Error("Ad is null"))
+                            adLoadCallback.onAdFailedToLoad(Error("Ad is null. Reason: "+e.message))
                         }
                     }
                     return@withContext

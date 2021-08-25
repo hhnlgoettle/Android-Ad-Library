@@ -34,7 +34,7 @@ class AdNetworkManagerTest {
 
         val stats = ImpressionStats()
         scope.launch {
-            manager.sendImpressionStats(stats, cb)
+            manager.sendImpressionStats(null, stats, cb)
             latch.countDown()
         }
         try {
@@ -54,11 +54,11 @@ class AdNetworkManagerTest {
         val job = Job()
         val scope = CoroutineScope(Dispatchers.IO + job)
 
-        val request = AdRequest("publisherID", "displayID", arrayOf())
+        val request = AdRequest("publisherID", "appId", "displayID", arrayOf())
         scope.launch {
             val result = manager.requestAd(request)
-            assertEquals("myID", result.adID)
-            assertEquals(request, result.adRequest)
+            assertEquals("appId", result.appId)
+            assertEquals("displayID", result.displayBlockId)
             latch.countDown()
         }
         try {
