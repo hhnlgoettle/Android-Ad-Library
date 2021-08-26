@@ -21,7 +21,7 @@ import java.lang.Error
  */
 class MainActivity : AppCompatActivity() {
     private lateinit var btnStartAd: Button
-    private var interactionRewardedAd: InteractionRewardedAd? = null;
+    private var interactionRewardedAd: InteractionRewardedAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AdManager.build(this)
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadAd() {
         if(interactionRewardedAd == null) {
-            var adRequest: AdRequest = AdRequest.build("6123df5155456a00388a9d5e")
+            val adRequest: AdRequest = AdRequest.build("6123df5155456a00388a9d5e")
             InteractionRewardedAd.load(this, adRequest, object: AdLoadCallback {
                 override fun onAdLoaded(ad: Ad) {
                     if(ad is InteractionRewardedAd) {
@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 it.fullscreenContentCallback = object: FullscreenContentCallback{
                     override fun onDismissed() {
                         Log.d("MainActivity", "onDismissed")
+                        interactionRewardedAd = null
                     }
 
                     override fun onFailedToShow(error: Error) {

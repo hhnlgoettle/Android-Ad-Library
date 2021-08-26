@@ -20,7 +20,7 @@ class AdNetworkManager : IAdNetworkManager{
         when (adRequest.type) {
             Ad::class.java.toString() -> throw Error("Type ${adRequest.type} is not supported")
             FullscreenAd::class.java.toString() -> throw Error("Type ${adRequest.type} is not supported")
-            InteractionRewardedAd::class.java.toString() -> {};
+            InteractionRewardedAd::class.java.toString() -> {}
             else -> throw Error("Type ${adRequest.type} is not supported")
         }
 
@@ -30,6 +30,7 @@ class AdNetworkManager : IAdNetworkManager{
         // if ad is not cached, download it
         if(!adRequestResult.cached) {
             downloadUrlItems(adRequestResult.downloadUrls, adRequestResult.campaignId)
+            AdManager.instance?.cacheManager?.createTimestampForCreative(adRequestResult.campaignId, adRequestResult.creativeTimestamp)
         }
 
         val ad =  InteractionRewardedAd(
@@ -73,9 +74,10 @@ class AdNetworkManager : IAdNetworkManager{
             for(item in promises) {
                 item.await()
             }
+            cacheManager.createTimestampForCreative(adID, )
         } catch (err: Throwable) {
             // if error occurs, delete the ad content
-            cacheManager.deleteAdDirectory(adID);
+            cacheManager.deleteAdDirectory(adID)
             throw err
         }
 

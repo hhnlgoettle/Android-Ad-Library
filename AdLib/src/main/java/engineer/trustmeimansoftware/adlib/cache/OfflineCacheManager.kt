@@ -30,18 +30,16 @@ class OfflineCacheManager(private val assetPath: String = "file:///android_asset
     /**
      * returns an Array of cached adIDs
      */
-    override fun getCachedAdIDs(): Array<String> {
-        val cachedAds = ArrayList<String>()
-        var files = AdManager.instance!!.context!!.assets!!.list("ads/")
+    override fun getCachedAdIDs(): Array<CachedAd> {
+        val cachedAds = ArrayList<CachedAd>()
+        val files = AdManager.instance!!.context!!.assets!!.list("ads/")
         //files = files?.filter { s -> !s.startsWith(".") }?.toTypedArray()
-        Log.d("files", files?.size.toString())
         files?.let {
             for (file: String in it) {
-                Log.d("file", file)
-                cachedAds.add(file)
+                cachedAds.add(CachedAd(file))
             }
         }
-        return cachedAds.toTypedArray();
+        return cachedAds.toTypedArray()
     }
 
     /**
@@ -72,5 +70,9 @@ class OfflineCacheManager(private val assetPath: String = "file:///android_asset
 
     override fun deleteAdDirectory(adID: String) {
         throw Error("Stub")
+    }
+
+    override fun createTimestampForCreative(adID: String, timestamp: String) {
+        TODO("Not yet implemented")
     }
 }
