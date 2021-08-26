@@ -13,7 +13,7 @@ class OfflineAdNetworkManager : IAdNetworkManager {
             throw Exception("no cached Ads available")
         }
 
-        val adID = adRequest.cachedAds.random()
+        val adID = adRequest.cachedAds.random().id
         return InteractionRewardedAd(adID, AdManager.instance?.cacheManager?.getFullCreativePath(adID).toString());
     }
 

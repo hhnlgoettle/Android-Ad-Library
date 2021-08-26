@@ -44,8 +44,8 @@ class CacheManagerTest {
         val cache = manager.cache as CacheManager
 
         val cachedAdIds = cache.getCachedAdIDs()
-        assertEquals(arrayOf<String>("someAdID").size, cachedAdIds.size)
-        assertEquals("someAdID", cachedAdIds[0])
+        assertEquals(1, cachedAdIds.size)
+        assertEquals("someAdID", cachedAdIds[0].id)
     }
 
     @Test

@@ -2,12 +2,12 @@ package engineer.trustmeimansoftware.adlib.cache
 
 import androidx.appcompat.app.AppCompatActivity
 import engineer.trustmeimansoftware.adlib.AdManager
-import java.io.File
-import java.io.IOException
+import java.io.*
+import java.lang.Exception
 
 class CacheManager() : ICacheManager {
     fun cachePath(): String {
-        return AdManager.instance!!.context!!.cacheDir.absolutePath;
+        return AdManager.instance!!.context!!.cacheDir.absolutePath
     }
 
     fun cacheDir(): File {
@@ -44,15 +44,16 @@ class CacheManager() : ICacheManager {
     /**
      * returns an Array of cached adIDs
      */
-    override fun getCachedAdIDs(): Array<String> {
-        val cachedAds = ArrayList<String>()
-        var files = File(cachePath()+"/ads").list()
+    override fun getCachedAdIDs(): Array<CachedAd> {
+        val cachedAds = ArrayList<CachedAd>()
+        val files = File(cachePath()+"/ads").list()
         files?.let {
             for (file: String in it) {
-                cachedAds.add(file)
+                val timestamp = readTimestampForCreative(file)
+                cachedAds.add(CachedAd(file, timestamp))
             }
         }
-        return cachedAds.toTypedArray();
+        return cachedAds.toTypedArray()
     }
 
     /**
@@ -73,20 +74,64 @@ class CacheManager() : ICacheManager {
         }
     }
 
+    /**
+     * prepares a directory for download
+     * deletes existing files
+     * creates dir if not exists
+     */
     override fun prepareForDownload(adID: String): File {
-        var adDir = File(cachePath()+"/ads/"+adID)
+        val adDir = File(cachePath()+"/ads/"+adID)
         if(adDir.exists()) {
-            deleteAdDirectory(adID);
+            deleteAdDirectory(adID)
         }
         adDir.mkdirs()
         return adDir
     }
 
+    /**
+     * deletes an ad directory
+     */
     override fun deleteAdDirectory(adID: String) {
-        var dir = File(cachePath()+"/ads/"+adID)
+        val dir = File(cachePath()+"/ads/"+adID)
         if(!dir.exists()) {
-            return;
+            return
         }
-        dir.deleteRecursively();
+        dir.deleteRecursively()
+    }
+
+    /**
+     * creates a file called timestamp and stores the creatives timestamp there
+     */
+    override fun createTimestampForCreative(adID: String, timestamp: String) {
+        val dir = File(cachePath()+"/ads/"+adID)
+        if(!dir.exists()) {
+            throw Exception("directory does not exist")
+        }
+        val file = File(dir, "timestamp")
+        val writer = OutputStreamWriter(FileOutputStream(file))
+        writer.write(timestamp)
+        writer.flush()
+        writer.close()
+    }
+
+    /**
+     * reads a creatives' timestamp file and returns its content
+     */
+    private fun readTimestampForCreative(adID: String): String {
+        var reader: InputStreamReader? = null
+        try {
+            val dir = File(cachePath() + "/ads/" + adID)
+            if (!dir.exists()) {
+                throw Exception("directory does not exist")
+            }
+            val file = File(dir, "timestamp")
+            if(file.exists()) {
+                reader = InputStreamReader(FileInputStream(file))
+                return reader.readText()
+            }
+            return ""
+        } finally {
+            reader?.close()
+        }
     }
 }

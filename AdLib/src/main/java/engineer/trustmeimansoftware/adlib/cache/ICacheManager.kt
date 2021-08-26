@@ -21,9 +21,9 @@ interface ICacheManager {
     fun generateFilePath(adID: String, filename: String): String
 
     /**
-     * returns an Array of cached adIDs
+     * returns an Array of CachedAd
      */
-    fun getCachedAdIDs(): Array<String>
+    fun getCachedAdIDs(): Array<CachedAd>
 
     /**
      *
@@ -46,4 +46,9 @@ interface ICacheManager {
      * deletes the directory of a given ad
      */
     fun deleteAdDirectory(adID: String)
+
+    /**
+     * creates a file with the given timestamp in a creative directory
+     */
+    fun createTimestampForCreative(adID: String, timestamp: String = "")
 }

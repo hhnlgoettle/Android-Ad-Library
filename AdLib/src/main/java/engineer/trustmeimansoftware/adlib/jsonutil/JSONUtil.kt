@@ -1,5 +1,7 @@
 package engineer.trustmeimansoftware.adlib.jsonutil
 
+import com.google.gson.Gson
+import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -37,12 +39,16 @@ class JSONUtil {
         }
 
         fun jsonArrayToStringArray(jsonArray: JSONArray): Array<String> {
-            val array = ArrayList<String>();
+            val array = ArrayList<String>()
             for (i in 0 until jsonArray.length()) {
                 array.add(jsonArray.getString(i))
             }
             return array.toTypedArray()
         }
 
+        fun toJSONString(item: Any): String {
+            val gson = Gson()
+            return gson.toJson(item)
+        }
     }
 }

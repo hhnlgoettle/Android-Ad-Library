@@ -7,6 +7,7 @@ import engineer.trustmeimansoftware.adlib.AdManager
 import engineer.trustmeimansoftware.adlib.IAdManager
 import engineer.trustmeimansoftware.adlib.ad.AdRequest
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.cache.CachedAd
 import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
 
@@ -60,7 +61,7 @@ class TestActivity : AppCompatActivity() {
     }
 
     fun loadAd(loadCallback: AdLoadCallback) {
-        val adRequest = AdRequest("publisherID", "appId", "displayID", arrayOf<String>())
+        val adRequest = AdRequest("publisherID", "appId", "displayID", arrayOf<CachedAd>())
         InteractionRewardedAd.load(this, adRequest, loadCallback)
     }
 

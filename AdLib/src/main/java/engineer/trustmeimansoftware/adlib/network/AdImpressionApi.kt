@@ -32,7 +32,6 @@ class AdImpressionApi {
             val request: StringRequest = object: StringRequest(
                 Method.POST, url,
                 { response ->
-                    println("response: $response")
                     cont.resume(AdRequestResult.fromJSONString(response))
                 },
                 { error ->

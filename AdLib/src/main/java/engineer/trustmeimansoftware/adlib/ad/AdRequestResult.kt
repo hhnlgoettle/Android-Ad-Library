@@ -9,7 +9,8 @@ data class AdRequestResult(
     val displayBlockId: String,
     val campaignId: String,
     val downloadUrls: Array<DownloadUrlItem>,
-    val cached: Boolean = false
+    val cached: Boolean = false,
+    val creativeTimestamp: String = ""
 ) {
     companion object {
         fun fromJSONString(json: String): AdRequestResult {
@@ -19,6 +20,7 @@ data class AdRequestResult(
             val displayBlockId = JSONUtil.readNullableString(jsonObj, "displayBlockId", "")
             val campaignId = JSONUtil.readNullableString(jsonObj, "campaignId", "")
             val cached = JSONUtil.readBoolean(jsonObj, "cached", false)
+            val creativeTimestamp = JSONUtil.readNullableString(jsonObj, "creativeTimestamp", "")
 
             var downloadUrls = ArrayList<DownloadUrlItem>()
             val downloadUrlsAsJSONArray = JSONUtil.readNullableJSONArray(jsonObj, "downloadUrls")
@@ -31,7 +33,7 @@ data class AdRequestResult(
                 }
 
             }
-            return AdRequestResult(impressionId!!, appId!!, displayBlockId!!, campaignId!!, downloadUrls.toTypedArray(), cached)
+            return AdRequestResult(impressionId!!, appId!!, displayBlockId!!, campaignId!!, downloadUrls.toTypedArray(), cached, creativeTimestamp!!)
         }
     }
 }
