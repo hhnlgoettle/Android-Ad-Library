@@ -77,7 +77,20 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
                 return
             }
 
+            // build js Interface
             val jsInterface = AdManager.instance!!.jsInterfaceBuilder!!.build(this)
+            // if ad has additionalReward set, we can init the LiveReward Object
+            // LiveReward will display the user how much they have earned, which will be lost,
+            // when they close the ad prematurely
+            ad?.additionalReward?.let {
+                reward ->
+                jsInterface.onStartFunc = {
+                    this.runOnUiThread {
+                        webview.evaluateJavascript("InteractionRewardingAds.initLiveReward({rewardAmount: ${reward.amount.toInt()}});") {};
+                    }
+                }
+            }
+
             webview.addJavascriptInterface(jsInterface, "AndroidIRA")
             webview.loadUrl(it.path)
         }
@@ -89,7 +102,6 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
     override fun finishActivity(stats: ImpressionStats?) {
         try {
             ad?.fullscreenContentCallback?.onDismissed()
-            // TODO send stats
             stats?.let {
                 if(it.hasEarnedReward) {
                     val rewards = ArrayList<RewardItem>()

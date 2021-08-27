@@ -16,6 +16,9 @@ class JavaScriptInterface(activity: IAdFullscreenActivity) : AbstractJavaScriptI
     @JavascriptInterface
     override fun onStart() {
         Log.d(TAG, "onStart")
+        onStartFunc?.let {
+            it.invoke()
+        }
     }
     @JavascriptInterface
     override fun onClose(jsonStats: String) {
