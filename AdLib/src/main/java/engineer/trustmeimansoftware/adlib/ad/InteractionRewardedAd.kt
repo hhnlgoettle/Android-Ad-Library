@@ -3,8 +3,8 @@ package engineer.trustmeimansoftware.adlib.ad
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
-import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
 import engineer.trustmeimansoftware.adlib.callback.OnUserRewardedListener
+import engineer.trustmeimansoftware.adlib.reward.RewardItem
 
 /**
  * @class InteractionRewardedAd
@@ -16,7 +16,8 @@ class InteractionRewardedAd(id: String,
                             url: String,
                             var rewardType: String = "Rewards",
                             var rewardAmount: Long = 10L,
-                            requestResult: AdRequestResult? = null
+                            requestResult: AdRequestResult? = null,
+                            var additionalReward: RewardItem? = null
 ) : FullscreenAd(id, url, requestResult) {
     var onUserRewardedListener: OnUserRewardedListener? = null
 

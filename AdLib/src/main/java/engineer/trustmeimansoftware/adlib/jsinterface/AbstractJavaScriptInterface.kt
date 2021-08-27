@@ -6,6 +6,8 @@ import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
 
 abstract class AbstractJavaScriptInterface(val activity: IAdFullscreenActivity) {
+    var onStartFunc: (() -> Unit)? = null
+
     @JavascriptInterface
     open fun onStart() {
         Log.d(JavaScriptInterface.TAG, "onStart")

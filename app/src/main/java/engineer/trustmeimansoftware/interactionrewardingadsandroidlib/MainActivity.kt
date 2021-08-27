@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             })
         } else {
             interactionRewardedAd?.let {
+                it.additionalReward = RewardItem("Coin", 250)
                 it.fullscreenContentCallback = object: FullscreenContentCallback{
                     override fun onDismissed() {
                         Log.d("MainActivity", "onDismissed")
