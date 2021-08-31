@@ -3,16 +3,28 @@ package engineer.trustmeimansoftware.adlib.ad
 import engineer.trustmeimansoftware.adlib.jsonutil.JSONUtil
 import org.json.JSONObject
 
+/**
+ * models a result from an AdRequest answered by the AdWebserver
+ */
 data class AdRequestResult(
+    /**
+     * unique id of this impression
+     */
     val impressionId: String,
     val appId: String,
     val displayBlockId: String,
     val campaignId: String,
+    /**
+     * urls of files to download from the AdWebserver
+     */
     val downloadUrls: Array<DownloadUrlItem>,
     val cached: Boolean = false,
     val creativeTimestamp: String = ""
 ) {
     companion object {
+        /**
+         * generates an AdRequestResult from a Json String
+         */
         fun fromJSONString(json: String): AdRequestResult {
             val jsonObj = JSONObject(json)
             val appId = JSONUtil.readNullableString(jsonObj, "appId", "")
@@ -38,4 +50,7 @@ data class AdRequestResult(
     }
 }
 
+/**
+ * models a DownloadUrlItem with url and filename
+ */
 data class DownloadUrlItem(val url: String, val filename: String)

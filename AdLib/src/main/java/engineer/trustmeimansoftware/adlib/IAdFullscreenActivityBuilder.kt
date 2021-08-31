@@ -8,6 +8,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * AdFullscreenActivity Builder funcs
+ */
 interface IAdFullscreenActivityBuilder {
 
     /**
@@ -21,7 +24,7 @@ interface IAdFullscreenActivityBuilder {
     fun buildIntent(activity: AppCompatActivity): Intent
 
     /**
-     * launch an intent to
+     * launch an intent
      */
     @SuppressLint("LongLogTag")
     fun launchIntent(intent: Intent)

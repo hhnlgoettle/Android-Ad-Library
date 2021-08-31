@@ -7,6 +7,9 @@ import engineer.trustmeimansoftware.adlib.jsinterface.IJavaScriptInterfaceBuilde
 import engineer.trustmeimansoftware.adlib.network.IAdNetworkManager
 import engineer.trustmeimansoftware.adlib.registry.AdRegistry
 
+/**
+ * interface for AdManagers
+ */
 interface IAdManager {
     var baseUrl: String
     var appId: String?

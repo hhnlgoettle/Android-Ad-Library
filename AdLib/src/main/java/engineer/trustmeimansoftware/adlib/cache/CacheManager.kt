@@ -5,38 +5,56 @@ import engineer.trustmeimansoftware.adlib.AdManager
 import java.io.*
 import java.lang.Exception
 
+/**
+ * abstraction layer between file system
+ */
 class CacheManager() : ICacheManager {
-    fun cachePath(): String {
+    /**
+     * @return the path to the cache directory
+     */
+    private fun cachePath(): String {
         return AdManager.instance!!.context!!.cacheDir.absolutePath
     }
 
-    fun cacheDir(): File {
+    /**
+     * @return the file that links to cache dir
+     */
+    private fun cacheDir(): File {
         return AdManager.instance!!.context!!.cacheDir
     }
 
-    fun adDir(): File {
+    /**
+     * @return the ads directory path
+     */
+    private fun adDir(): File {
         return File(cacheDir(), "/ads")
     }
 
+    /**
+     * @return file that links to adDirectory
+     */
     fun adDir(adID: String): File {
         return File(adDir(), "/$adID")
     }
 
 
     /**
-     * returns the creatives path
+     * returns the creative's path with file:// prefix
      */
     override fun getFullCreativePath(adID: String): String {
         return "file://${cachePath()}/ads/$adID/index.html"
     }
 
     /**
-     * returns the creatives path
+     * returns the creative's path
      */
     override fun getCreativePath(adID: String): String {
         return "/ads/$adID/index.html"
     }
 
+    /**
+     * generates a filepath for a file to download
+     */
     override fun generateFilePath(adID: String, filename: String): String {
         return cachePath()+"/ads/"+adID+"/"+filename
     }
@@ -59,7 +77,6 @@ class CacheManager() : ICacheManager {
     /**
      *
      * @param activity - the activity this called from
-     * needed to access the resources
      *
      * @param adID the id of the ad
      *

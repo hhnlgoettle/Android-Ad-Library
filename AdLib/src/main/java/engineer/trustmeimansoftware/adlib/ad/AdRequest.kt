@@ -4,9 +4,13 @@ import engineer.trustmeimansoftware.adlib.AdManager
 import engineer.trustmeimansoftware.adlib.cache.CachedAd
 
 /**
- * @class AdRequest
+ * models an Request to the AdWebserver
+ * @param publisherId the publisher's id
+ * @param appId the app's appId at the AdWebserver
+ * @param displayId the display's id at the AdWebserver
+ * @param cachedAds cached ads by the library
+ * @param type type of ad requested
  *
- * used to request an ad from the AdWebServer
  */
 class AdRequest(val publisherId: String, val appId: String, val displayId: String, val cachedAds: Array<CachedAd>, var type: String? = null) {
 

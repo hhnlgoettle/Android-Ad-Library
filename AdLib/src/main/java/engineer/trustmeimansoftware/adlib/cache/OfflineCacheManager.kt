@@ -1,12 +1,16 @@
 package engineer.trustmeimansoftware.adlib.cache
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import engineer.trustmeimansoftware.adlib.AdManager
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
 
+/**
+ * CacheManager for Offline usage
+ * <p>Links to the assets directory</p>
+ * <p>if you want to include your own creatives in offline mode, put them into the assets/ads directory</p>
+ */
 class OfflineCacheManager(private val assetPath: String = "file:///android_asset") : ICacheManager {
 
     /**
@@ -23,8 +27,11 @@ class OfflineCacheManager(private val assetPath: String = "file:///android_asset
         return "ads/$adID/index.html"
     }
 
+    /**
+     * not needed in offline mode
+     */
     override fun generateFilePath(adID: String, filename: String): String {
-        TODO("Not yet implemented")
+        throw Error("Stub")
     }
 
     /**
@@ -64,15 +71,24 @@ class OfflineCacheManager(private val assetPath: String = "file:///android_asset
         }
     }
 
+    /**
+     * not needed in offline mode
+     */
     override fun prepareForDownload(adID: String): File {
         throw Error("Stub")
     }
 
+    /**
+     * not needed in offline mode
+     */
     override fun deleteAdDirectory(adID: String) {
         throw Error("Stub")
     }
 
+    /**
+     * not needed in offline mode
+     */
     override fun createTimestampForCreative(adID: String, timestamp: String) {
-        TODO("Not yet implemented")
+        throw Error("Stub")
     }
 }

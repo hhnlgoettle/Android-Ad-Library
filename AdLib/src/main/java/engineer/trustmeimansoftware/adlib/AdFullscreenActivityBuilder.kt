@@ -9,10 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * class AdFullScreenActivityBuilder
- *
- * create AdActivities and receive their result on completion
- *
+ * creates [AdFullscreenActivity] and received their result
  */
 open class AdFullscreenActivityBuilder(activity: AppCompatActivity) :IAdFullscreenActivityBuilder {
 
@@ -22,6 +19,10 @@ open class AdFullscreenActivityBuilder(activity: AppCompatActivity) :IAdFullscre
 
     private val TAG = "AdFullscreenActivityBuilder"
 
+
+    /**
+     * [ActivityResultLauncher] used to launch Activities and receive their result
+     */
     private var launchActivity: ActivityResultLauncher<Intent>? = null;
 
     /**
@@ -40,7 +41,7 @@ open class AdFullscreenActivityBuilder(activity: AppCompatActivity) :IAdFullscre
     }
 
     /**
-     * create an intent used to launch an AdActivity
+     * create an intent used to launch an [AdFullscreenActivity]
      */
     override fun buildIntent(activity: AppCompatActivity): Intent {
         val intent: Intent = Intent(activity, AdFullscreenActivity::class.java).apply {
@@ -51,7 +52,7 @@ open class AdFullscreenActivityBuilder(activity: AppCompatActivity) :IAdFullscre
     }
 
     /**
-     * launch an intent to
+     * launches an [Intent] using [launchActivity]
      */
     @SuppressLint("LongLogTag")
     override fun launchIntent(intent: Intent) {

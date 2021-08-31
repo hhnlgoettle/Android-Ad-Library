@@ -5,8 +5,14 @@ import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import org.json.JSONArray
 import org.json.JSONObject
 
+/**
+ * JSON util functions
+ */
 class JSONUtil {
     companion object {
+        /**
+         * reads string with an key, has fallback if key if null
+         */
         fun readNullableString(jsonObj: JSONObject, key: String, fallback: String? = null): String? {
             if(jsonObj.isNull(key)) {
                 return fallback

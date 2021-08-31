@@ -5,7 +5,13 @@ import engineer.trustmeimansoftware.adlib.ad.*
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import java.io.File
 
+/**
+ * Stump connector when using library in offline mode
+ */
 class OfflineAdNetworkManager : IAdNetworkManager {
+    /**
+     * returns a cached Ad if one exists
+     */
     override suspend fun getAd(adRequest: AdRequest): Ad {
         if(adRequest.type != InteractionRewardedAd::class.java.toString()) throw Error("unsupported type ${adRequest.type}, should be ${InteractionRewardedAd::class.java.toString()}")
 
@@ -18,15 +24,15 @@ class OfflineAdNetworkManager : IAdNetworkManager {
     }
 
     override suspend fun requestAd(adRequest: AdRequest): AdRequestResult {
-        TODO("Not yet implemented")
+        throw Error("Stub")
     }
 
     override suspend fun downloadAd(url: String, file: File) {
-        TODO("Not yet implemented")
+        throw Error("Stub")
     }
 
     override suspend fun downloadUrlItems(downloadUrlItems: Array<DownloadUrlItem>, destination: String) {
-        TODO("Not yet implemented")
+        throw Error("Stub")
     }
 
     override fun sendImpressionStats(
@@ -34,6 +40,6 @@ class OfflineAdNetworkManager : IAdNetworkManager {
         impressionStats: ImpressionStats,
         cb: ((String) -> Unit)?
     ) {
-        TODO("Not yet implemented")
+        throw Error("Stub")
     }
 }

@@ -7,12 +7,11 @@ import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
 import kotlinx.coroutines.*
 
 /**
- * @class Ad
- *
- * a basic ad
+ * models a basic ad
  *
  * @param id - the unique id of the ad
  * @param path - where to find the ad
+ * @param requestResult the result of the [AdRequest] that led to this ad
  */
 open class Ad(private val id: String, var path: String, var requestResult: AdRequestResult? = null) {
 
@@ -22,6 +21,8 @@ open class Ad(private val id: String, var path: String, var requestResult: AdReq
 
     companion object {
         /**
+         * loads an Ad in the activities lifecycleScope
+         *
          * @param adRequest the AdRequest used to request this ad from the AdWebServer
          * @param adLoadCallback the callback called when this ad is downloaded and ready
          */

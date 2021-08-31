@@ -8,18 +8,14 @@ import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
 import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
 
 /**
- * @class FullscreenAd
- *
- * an Ad that is displayed in a WebView in fullscreen
+ * models an Ad that is displayed in fullscreen mode
  */
 open class FullscreenAd(id: String, url: String, requestResult: AdRequestResult? = null) : Ad(id, url, requestResult) {
 
     var fullscreenContentCallback: FullscreenContentCallback? = null
 
     /**
-     * show
-     *
-     * display the ad
+     * shows the ad
      */
     open fun show(activity: AppCompatActivity) {
         if(fullscreenContentCallback == null) {
@@ -37,6 +33,9 @@ open class FullscreenAd(id: String, url: String, requestResult: AdRequestResult?
     companion object {
         // static inheritance is disallowed in kotlin
         // https://stackoverflow.com/questions/39303180/kotlin-how-can-i-create-a-static-inheritable-function
+        /**
+         * loads the ad
+         */
         fun load(activity: AppCompatActivity, adRequest: AdRequest, adLoadCallback: AdLoadCallback) {
             if(adRequest.type == null) adRequest.type = this::class.java.declaringClass.toString()
             Ad.load(activity, adRequest, adLoadCallback)
