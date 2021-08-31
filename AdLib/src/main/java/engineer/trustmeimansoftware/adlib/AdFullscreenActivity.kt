@@ -10,18 +10,39 @@ import engineer.trustmeimansoftware.adlib.reward.RewardItem
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 
 /**
- * @class AdFullscreenActivity
- *
- * An Activity that displays a FullscreenAd
+ * Activity that handles the display of an InteractionRewardedAd
+ * <p>An instance of this class will on creation look up
  */
 open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
+    /**
+     * the extracted adID from the savedInstanceBundle
+     */
     private var adID: String? = null
+
+    /**
+     * the ad found in the [engineer.trustmeimansoftware.adlib.registry.AdRegistry] instance
+     */
     private var ad: InteractionRewardedAd? = null
+
+    /**
+     * return object returned to the activity, that created this activity
+     */
     private val onFinishData = Intent()
+
+    /**
+     * result code
+     */
     private var resultCode = RESULT_OK
 
+    /**
+     * the webview that displays the creative
+     */
     private lateinit var webview: WebView
 
+    /**
+     *
+     * @param savedInstanceState the [Bundle] that contains the adID under key <b>EXTRA_AD_ID</b>
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adfullscreen)
@@ -33,9 +54,7 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
     }
 
     /**
-     * getAdFromIntent
-     *
-     * loads adID from the intent
+     * extracts adID from intent and loads ad from adRegistry
      */
     private fun getAdFromIntent() {
         adID = intent.extras?.getString("EXTRA_AD_ID")
@@ -55,6 +74,10 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
         }
     }
 
+    /**
+     * shows the ad in webview
+     * and attaches an JavaScriptListener under key <b>AndroidIRA</b> to the webview
+     */
     @SuppressLint("SetJavaScriptEnabled")
     private fun showAd() {
         ad?.let {
@@ -97,6 +120,9 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
     }
 
     /**
+     * finishes the activity
+     * <p>if stats is not null, it is sent to the server
+     * @param stats the ImpressionStats collected during the impression
      *
      */
     override fun finishActivity(stats: ImpressionStats?) {
@@ -122,8 +148,9 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
     }
 
     /**
-     * closes the activity with an error
-     * @param error - the cause
+     * finishes the activity with an error code
+     * <p>Puts the [Error] 's message in the [onFinishData] under key <b>EXTRA_ERROR_MESSAGE</b>
+     * @param error the cause
      */
     override fun finishActivityWithError(error: java.lang.Error, stats: ImpressionStats?) {
         try {

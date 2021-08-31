@@ -7,6 +7,9 @@ import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 
+/**
+ * Interface for the webview which displays ads
+ */
 class JavaScriptInterface(activity: IAdFullscreenActivity) : AbstractJavaScriptInterface(activity) {
 
     companion object {
@@ -20,6 +23,10 @@ class JavaScriptInterface(activity: IAdFullscreenActivity) : AbstractJavaScriptI
             it.invoke()
         }
     }
+
+    /**
+     * calls activity to close
+     */
     @JavascriptInterface
     override fun onClose(jsonStats: String) {
         val stats = ImpressionStats.fromJSON(jsonStats)
@@ -27,6 +34,10 @@ class JavaScriptInterface(activity: IAdFullscreenActivity) : AbstractJavaScriptI
             activity.finishActivity(stats)
         }
     }
+
+    /**
+     * calls activity to close with an error
+     */
     @JavascriptInterface
     override fun onCloseOnError(errorMessage: String, jsonStats: String) {
         Log.d(TAG, "onCloseOnError")

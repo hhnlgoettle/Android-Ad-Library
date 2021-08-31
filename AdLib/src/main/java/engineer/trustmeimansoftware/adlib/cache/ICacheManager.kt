@@ -3,6 +3,9 @@ package engineer.trustmeimansoftware.adlib.cache
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
 
+/**
+ * interface for CacheManager
+ */
 interface ICacheManager {
 
     /**

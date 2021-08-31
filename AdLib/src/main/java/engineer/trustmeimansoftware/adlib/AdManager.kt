@@ -15,28 +15,61 @@ import engineer.trustmeimansoftware.adlib.registry.AdRegistry
 import engineer.trustmeimansoftware.adlib.util.AppId
 
 /**
- * @class AdManager
- *
- * holds refs to all relevant Ad related classes
+ * initializes relevant objects and stores references to them
  */
 class AdManager: IAdManager {
+    /**
+     * baseUrl of the Ad Server
+     */
     override var baseUrl: String = "https://ads.trustmeimansoftware.engineer"
+
+    /**
+     * Activity Context
+     */
     override var context: Context? = null
 
+    /**
+     * used to launch AdFullscreenActivity
+     */
     override var adFullscreenActivityBuilder: IAdFullscreenActivityBuilder? = null
+
+    /**
+     * holds refs to ads
+     */
     override var adRegistry: AdRegistry? = null
+
+    /**
+     * manages the cache in which creatives are stored
+     */
     override var cacheManager: ICacheManager? = null
+
+    /**
+     * builds the JavaScriptInterface attached to the webview when displaying the creative
+     */
     override var jsInterfaceBuilder: IJavaScriptInterfaceBuilder? = null
+
+    /**
+     * handles network request
+     */
     override var networkManager: IAdNetworkManager? = null
 
-    override var appId: String? = null
     /**
-     * initialize()
+     * the publisher's appId
+     */
+    override var appId: String? = null
+
+    /**
+     * initializes with default build options
      */
     override fun initialize(activity: AppCompatActivity?) {
         initialize(activity, AdManagerBuildOpts.default())
     }
 
+    /**
+     * initializes instance
+     * @param activity the activity
+     * @param buildOpts used to customize AdManager for e.g. offline use
+     */
     override fun initialize(activity: AppCompatActivity?, buildOpts: AdManagerBuildOpts) {
         if (activity != null) {
             context = activity.applicationContext
@@ -53,6 +86,9 @@ class AdManager: IAdManager {
 
 
     companion object {
+        /**
+         * the instance
+         */
         var instance: IAdManager? = null
 
         /**

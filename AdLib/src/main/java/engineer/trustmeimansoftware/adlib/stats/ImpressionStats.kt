@@ -4,6 +4,9 @@ import com.google.gson.Gson
 import engineer.trustmeimansoftware.adlib.jsonutil.JSONUtil
 import org.json.JSONObject
 
+/**
+ * models ad impression stats that were collected during ad impression
+ */
 data class ImpressionStats(
     val hasEarnedReward: Boolean = false,
     val duration: Long? = 0,

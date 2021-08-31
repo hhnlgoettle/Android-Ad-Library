@@ -14,8 +14,14 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 
+/**
+ * Api for WebServer for AdImpressions
+ */
 class AdImpressionApi {
     companion object {
+        /**
+         * sends an [ImpressionStats] to webserver
+         */
         suspend fun sendAdImpression(ad: Ad, stats: ImpressionStats) = suspendCoroutine<AdRequestResult> { cont ->
             // create network queue
             val queue = Volley.newRequestQueue(AdManager.instance!!.context)

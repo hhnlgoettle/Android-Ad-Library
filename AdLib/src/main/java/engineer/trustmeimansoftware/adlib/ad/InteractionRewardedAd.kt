@@ -7,10 +7,10 @@ import engineer.trustmeimansoftware.adlib.callback.OnUserRewardedListener
 import engineer.trustmeimansoftware.adlib.reward.RewardItem
 
 /**
- * @class InteractionRewardedAd
- *
- * an ad that rewards a user for watching
- * additionally rewards user for interacting with the ad
+ * models an ad that rewards users for watching an ad and interacting with an ad
+ * @property rewardType Type of the additional Reward
+ * @property rewardAmount max amount user can get through interactions
+ * @property additionalReward the additional reward for the user
  */
 class InteractionRewardedAd(id: String,
                             url: String,
@@ -35,6 +35,9 @@ class InteractionRewardedAd(id: String,
     companion object {
         // static inheritance is disallowed in kotlin
         // https://stackoverflow.com/questions/39303180/kotlin-how-can-i-create-a-static-inheritable-function
+        /**
+         * loads the ad
+         */
         fun load(activity: AppCompatActivity, adRequest: AdRequest, adLoadCallback: AdLoadCallback) {
             if(adRequest.type == null) adRequest.type = this::class.java.declaringClass.toString()
             FullscreenAd.load(activity, adRequest, adLoadCallback)

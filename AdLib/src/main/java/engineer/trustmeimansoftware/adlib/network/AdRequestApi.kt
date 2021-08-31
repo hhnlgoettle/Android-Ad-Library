@@ -14,6 +14,9 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+/**
+ * Api that handles requests for loading ads
+ */
 class AdRequestApi {
     companion object {
         suspend fun loadAdRequest(adRequest: AdRequest) = suspendCoroutine<AdRequestResult> { cont ->

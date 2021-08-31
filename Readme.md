@@ -25,7 +25,12 @@ The instance can be found <a href="https://nexus.trustmeimansoftware.engineer"> 
 
 All deployed versions can be found <a href="https://nexus.trustmeimansoftware.engineer/#browse/browse:maven-releases"> here </a>. 
 
-### Requirements
+## Code Documentation
+Documentation for the AdLib can be found in the folder `documentation/html/index.html`.
+
+To update docs, run `gradlew dokkaHtml`
+
+## Requirements
 
 To deploy the module, you need to set the credentials for the nexus instance.
 
@@ -36,7 +41,7 @@ USERNAME=YOUR_ADMIN_USERNAME
 PASSWORD=YOUR_PASSWORD
 ```
 
-### Deploying a new version
+## Deploying a new version
 
 To deploy a new version, update the `VERSION_NAME` in the root gradle.properties. 
 

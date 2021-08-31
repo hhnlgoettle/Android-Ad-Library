@@ -10,6 +10,9 @@ import java.lang.Exception
 import java.net.URL
 
 
+/**
+ * NetworkManager that handles loading ads from the network
+ */
 class AdNetworkManager : IAdNetworkManager{
 
     /**
@@ -41,10 +44,16 @@ class AdNetworkManager : IAdNetworkManager{
         return ad
     }
 
+    /**
+     * calls Api with an AdRequest
+     */
     override suspend fun requestAd(adRequest: AdRequest): AdRequestResult {
         return AdRequestApi.loadAdRequest(adRequest)
     }
 
+    /**
+     * downloads an ad item
+     */
     override suspend fun downloadAd(url: String, file: File) {
         URL(url).openStream().use { input ->
             FileOutputStream(file).use { output ->
@@ -55,6 +64,9 @@ class AdNetworkManager : IAdNetworkManager{
         }
     }
 
+    /**
+     * downloads all ad creative items
+     */
     override suspend fun downloadUrlItems(downloadUrlItems: Array<DownloadUrlItem>, adID: String) {
         val scope = CoroutineScope(Dispatchers.IO)
         val cacheManager = AdManager.instance?.cacheManager!! as CacheManager
@@ -83,6 +95,9 @@ class AdNetworkManager : IAdNetworkManager{
 
     }
 
+    /**
+     * sends impression stats to the webserver
+     */
     override fun sendImpressionStats(
         ad: Ad?,
         impressionStats: ImpressionStats,
