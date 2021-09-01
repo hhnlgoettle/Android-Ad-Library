@@ -19,6 +19,7 @@ interface IAdManager {
     var cacheManager: ICacheManager?
     var jsInterfaceBuilder: IJavaScriptInterfaceBuilder?
     var networkManager: IAdNetworkManager?
+    var config: AdManagerConfig
 
 
     fun initialize(activity: AppCompatActivity?)

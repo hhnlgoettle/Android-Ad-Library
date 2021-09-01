@@ -53,6 +53,10 @@ class AdManager: IAdManager {
      */
     override var networkManager: IAdNetworkManager? = null
 
+
+    override var config: AdManagerConfig = AdManagerConfig.getDefault()
+
+
     /**
      * the publisher's appId
      */
@@ -82,6 +86,7 @@ class AdManager: IAdManager {
         jsInterfaceBuilder = JavaScriptInterfaceBuilder()
         networkManager = if(buildOpts.offlineMode) OfflineAdNetworkManager() else AdNetworkManager()
         cacheManager = if(buildOpts.offlineMode) OfflineCacheManager() else CacheManager()
+        if(buildOpts.testMode) config = AdManagerConfig.getTestConfig()
     }
 
 

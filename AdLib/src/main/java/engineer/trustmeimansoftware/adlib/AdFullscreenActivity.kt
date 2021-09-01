@@ -2,12 +2,27 @@ package engineer.trustmeimansoftware.adlib
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.webkit.*
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
+import com.google.android.material.tabs.TabLayout
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import engineer.trustmeimansoftware.adlib.reward.RewardItem
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.time.measureTime
 
 /**
  * Activity that handles the display of an InteractionRewardedAd
@@ -40,6 +55,33 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
     private lateinit var webview: WebView
 
     /**
+     * the LinearLayout that displays the info
+     */
+    private lateinit var infoLayout: LinearLayout
+
+    /**
+     * progress bar during info screen
+     */
+    private lateinit var infoProgressBar: ProgressBar
+
+    /**
+     * should textview inform about interaction rewarding ads at the beginning
+     */
+    private var showInfoOnStart: Boolean = true
+
+    /**
+     * how long info text is present before showing ad
+     */
+    private var infoTimeInMillis: Long = 3500
+
+    /**
+     * flag to check if ad has started
+     * used to prevent multiple loading of ad
+     */
+    private var hasAdStarted: Boolean = false
+
+
+    /**
      *
      * @param savedInstanceState the [Bundle] that contains the adID under key <b>EXTRA_AD_ID</b>
      */
@@ -48,9 +90,27 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
         setContentView(R.layout.activity_adfullscreen)
         
         webview = findViewById(R.id.webview)
+        infoLayout = findViewById(R.id.infoLayout)
+        infoProgressBar = findViewById(R.id.progressBar)
 
+        getConfigValues()
         getAdFromIntent()
-        showAd()
+        if(showInfoOnStart) {
+            showInfo()
+        } else {
+            showAd()
+        }
+    }
+
+    /**
+     * loads [showInfoOnStart] and [infoTimeInMillis] from [AdManager] 's config if present
+     */
+    private fun getConfigValues() {
+        val manager = AdManager.instance
+        manager?.config?.let {
+            showInfoOnStart = it.showInfoTextPreAdDisplay
+            infoTimeInMillis = it.infoTextDisplayTimeInMillis
+        }
     }
 
     /**
@@ -80,6 +140,15 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
      */
     @SuppressLint("SetJavaScriptEnabled")
     private fun showAd() {
+        // prevent loading ad multiple times
+        if(hasAdStarted) return
+        hasAdStarted = true
+
+        // make webview visible, infoLayout invisible
+        infoLayout.visibility = View.GONE
+        webview.visibility = View.VISIBLE
+
+        // load ad
         ad?.let {
             val webSettings: WebSettings = webview.settings
             webSettings.javaScriptEnabled = true
@@ -116,6 +185,44 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
 
             webview.addJavascriptInterface(jsInterface, "AndroidIRA")
             webview.loadUrl(it.path)
+        }
+    }
+
+    /**
+     * shows an info text about interaction rewarding ads for a short timespan
+     * then calls [showAd]
+     *
+     */
+    private fun showInfo() {
+        infoLayout.visibility = View.VISIBLE
+        webview.visibility = View.INVISIBLE
+        Timer("DelayedShowAd", false).schedule(object: TimerTask() {
+            override fun run() {
+                // need to run on ui thread because we touch views
+                runOnUiThread {
+                    showAd()
+                }
+            }
+        }, infoTimeInMillis)
+        startInfoProgressBarUpdate()
+    }
+
+    /**
+     * starts a coroutine that updates the [infoProgressBar]
+     * stops when progress reaches 100 or parent layout is not visible anymore
+     */
+    private fun startInfoProgressBarUpdate() {
+        val scope = CoroutineScope(Dispatchers.Default)
+        val timeUnits = 100
+        scope.launch {
+            while(infoProgressBar.progress < 100 && infoLayout.visibility == View.VISIBLE) {
+                Log.d("ProgressBar", "update: "+infoProgressBar.progress.toString())
+                try {
+                    delay(infoTimeInMillis / timeUnits)
+                } catch (e: Exception) {
+                }
+                infoProgressBar.incrementProgressBy(100 / timeUnits)
+            }
         }
     }
 
