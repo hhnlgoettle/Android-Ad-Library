@@ -10,6 +10,7 @@ class AdManagerBuildOpts() {
      * <p> [engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager] as cacheManager
      */
     var offlineMode: Boolean = false
+    var testMode: Boolean = false
 
     companion object {
         /**

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.AdManagerBuildOpts
+import engineer.trustmeimansoftware.adlib.AdManagerConfig
 import engineer.trustmeimansoftware.adlib.IAdManager
 import engineer.trustmeimansoftware.adlib.ad.AdRequest
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
@@ -30,6 +32,7 @@ class TestActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test)
         AdManager.build(this)
         adManager = AdManager.instance!!
+        adManager!!.config = AdManagerConfig.getTestConfig()
         updateAdManager()
     }
 
