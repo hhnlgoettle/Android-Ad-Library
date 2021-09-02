@@ -1,12 +1,11 @@
 package engineer.trustmeimansoftware.interactionrewardingads.testlib
 
 import android.content.Intent
-import android.util.Log
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
@@ -30,7 +29,7 @@ class JavaScriptInterfaceE2ETest {
             AdManager.instance!!.cacheManager = OfflineCacheManager();
             val adManager = AdManagerUtil(AdManager.instance!!)
             val jsBuilder = TestJavaScriptInterfaceBuilder()
-            jsBuilder.onCloseCb = { result: String ->
+            jsBuilder.onCloseCb = { _: String ->
                 latch.countDown()
             }
 
@@ -130,8 +129,8 @@ class JavaScriptInterfaceE2ETest {
             activity.webviewClient = object : WebViewClient() {
                 override fun onPageFinished(view: WebView?, url: String?) {
                     view!!.evaluateJavascript("InteractionRewardingAds.init({desiredDurationMillis: 1000,desiredInteractionCount: 4 });") {};
-                    view!!.evaluateJavascript("document.getElementById('valid-div').click()") {};
-                    view!!.evaluateJavascript("InteractionRewardingAds.timer.on('onCountdownIsZero', function() {InteractionRewardingAds.close()})") {};
+                    view.evaluateJavascript("document.getElementById('valid-div').click()") {};
+                    view.evaluateJavascript("InteractionRewardingAds.timer.on('onCountdownIsZero', function() {InteractionRewardingAds.close()})") {};
                 }
             }
             activity.showAd();

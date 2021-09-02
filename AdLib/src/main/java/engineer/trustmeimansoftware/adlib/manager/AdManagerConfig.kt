@@ -1,4 +1,4 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.adlib.manager
 
 /**
  * models configuration for an [AdManager]
@@ -6,6 +6,11 @@ package engineer.trustmeimansoftware.adlib
 class AdManagerConfig() {
     var showInfoTextPreAdDisplay: Boolean = true
     var infoTextDisplayTimeInMillis: Long = 3500
+
+    /**
+     * base url of ad server
+     */
+    var baseUrl: String = "https://ads.trustmeimansoftware.engineer"
 
     companion object {
         /**

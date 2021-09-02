@@ -1,6 +1,6 @@
 package engineer.trustmeimansoftware.adlib.network
 
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.*
 import engineer.trustmeimansoftware.adlib.cache.CacheManager
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
@@ -29,6 +29,11 @@ class AdNetworkManager : IAdNetworkManager{
 
         // request ad from server
         val adRequestResult = requestAd(adRequest)
+
+        // if result has no campaignId, this indicates server has found no matching ad
+        if(adRequestResult.campaignId.isEmpty() || adRequestResult.campaignId == "") {
+            throw Error("no matching ad found")
+        }
 
         // if ad is not cached, download it
         if(!adRequestResult.cached) {
@@ -70,7 +75,7 @@ class AdNetworkManager : IAdNetworkManager{
     override suspend fun downloadUrlItems(downloadUrlItems: Array<DownloadUrlItem>, adID: String) {
         val scope = CoroutineScope(Dispatchers.IO)
         val cacheManager = AdManager.instance?.cacheManager!! as CacheManager
-        val baseUrl = AdManager.instance!!.baseUrl
+        val baseUrl = AdManager.instance!!.config.baseUrl
         val adDir = cacheManager.prepareForDownload(adID)
 
         // download all files in parallel

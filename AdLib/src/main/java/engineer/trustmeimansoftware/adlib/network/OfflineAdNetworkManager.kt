@@ -1,6 +1,6 @@
 package engineer.trustmeimansoftware.adlib.network
 
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.*
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import java.io.File

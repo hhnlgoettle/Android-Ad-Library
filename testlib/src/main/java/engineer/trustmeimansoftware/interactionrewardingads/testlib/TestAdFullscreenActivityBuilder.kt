@@ -8,10 +8,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivityBuilder
+import engineer.trustmeimansoftware.adlib.adactivity.AdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivityBuilder
 import engineer.trustmeimansoftware.adlib.ad.Ad
-import java.util.*
 
 /**
  *

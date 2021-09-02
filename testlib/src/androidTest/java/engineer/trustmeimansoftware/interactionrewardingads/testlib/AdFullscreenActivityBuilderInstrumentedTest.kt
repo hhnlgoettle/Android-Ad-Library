@@ -7,8 +7,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.adactivity.AdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.ad.FullscreenAd
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import junit.framework.TestCase.assertEquals

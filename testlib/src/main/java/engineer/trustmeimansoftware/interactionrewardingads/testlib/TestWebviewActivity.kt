@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.webkit.*
-import engineer.trustmeimansoftware.adlib.AdManager
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.reward.RewardItem
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 

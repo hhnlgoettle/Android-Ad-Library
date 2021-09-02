@@ -2,7 +2,7 @@ package engineer.trustmeimansoftware.adlib.network
 
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.AdRequest
 import engineer.trustmeimansoftware.adlib.ad.AdRequestResult
 import engineer.trustmeimansoftware.adlib.jsonutil.JSONUtil

@@ -2,14 +2,12 @@ package engineer.trustmeimansoftware.interactionrewardingads.testlib
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.AdRequest
-import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.network.OfflineAdNetworkManager
 import engineer.trustmeimansoftware.interactionrewardingads.testlib.util.AdManagerUtil
 import junit.framework.Assert.assertEquals
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 

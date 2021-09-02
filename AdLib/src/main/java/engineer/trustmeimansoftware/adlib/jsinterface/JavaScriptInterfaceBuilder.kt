@@ -1,6 +1,6 @@
 package engineer.trustmeimansoftware.adlib.jsinterface
 
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity
 
 /**
  * buils javascript interfaces

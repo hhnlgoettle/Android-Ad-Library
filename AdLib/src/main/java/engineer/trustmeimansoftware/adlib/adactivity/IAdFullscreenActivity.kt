@@ -1,4 +1,4 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.adlib.adactivity
 
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 
