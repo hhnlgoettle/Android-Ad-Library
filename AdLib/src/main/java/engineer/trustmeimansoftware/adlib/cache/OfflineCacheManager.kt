@@ -1,7 +1,7 @@
 package engineer.trustmeimansoftware.adlib.cache
 
 import androidx.appcompat.app.AppCompatActivity
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import java.io.File
 import java.io.IOException
 import java.io.InputStream

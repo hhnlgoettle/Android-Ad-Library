@@ -1,8 +1,9 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.adlib.manager
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleObserver
+import engineer.trustmeimansoftware.adlib.adactivity.AdFullscreenActivityBuilder
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivityBuilder
 import engineer.trustmeimansoftware.adlib.cache.CacheManager
 import engineer.trustmeimansoftware.adlib.cache.ICacheManager
 import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
@@ -18,11 +19,6 @@ import engineer.trustmeimansoftware.adlib.util.AppId
  * initializes relevant objects and stores references to them
  */
 class AdManager: IAdManager {
-    /**
-     * baseUrl of the Ad Server
-     */
-    override var baseUrl: String = "https://ads.trustmeimansoftware.engineer"
-
     /**
      * Activity Context
      */

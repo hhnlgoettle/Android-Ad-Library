@@ -2,7 +2,7 @@ package engineer.trustmeimansoftware.adlib.network
 
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.Ad
 import engineer.trustmeimansoftware.adlib.ad.AdRequestResult
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
@@ -22,6 +22,7 @@ class AdImpressionApi {
         /**
          * sends an [ImpressionStats] to webserver
          */
+        // TODO return AdImpressionResult
         suspend fun sendAdImpression(ad: Ad, stats: ImpressionStats) = suspendCoroutine<AdRequestResult> { cont ->
             // create network queue
             val queue = Volley.newRequestQueue(AdManager.instance!!.context)

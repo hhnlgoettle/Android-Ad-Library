@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.platform.app.InstrumentationRegistry
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 class TestActivityTest {

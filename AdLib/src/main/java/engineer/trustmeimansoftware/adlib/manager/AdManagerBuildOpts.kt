@@ -1,4 +1,4 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.adlib.manager
 
 /**
  * build options for the adManager
@@ -16,7 +16,7 @@ class AdManagerBuildOpts() {
         /**
          * returns an default config object
          */
-        fun default():AdManagerBuildOpts {
+        fun default(): AdManagerBuildOpts {
             val opts = AdManagerBuildOpts()
             opts.offlineMode = false
             return opts

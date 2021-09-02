@@ -1,8 +1,7 @@
 package engineer.trustmeimansoftware.interactionrewardingads.testlib.util
 
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivityBuilder
-import engineer.trustmeimansoftware.adlib.IAdManager
-import engineer.trustmeimansoftware.adlib.cache.CacheManager
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivityBuilder
+import engineer.trustmeimansoftware.adlib.manager.IAdManager
 import engineer.trustmeimansoftware.adlib.cache.ICacheManager
 import engineer.trustmeimansoftware.adlib.jsinterface.IJavaScriptInterfaceBuilder
 import engineer.trustmeimansoftware.adlib.network.IAdNetworkManager

@@ -3,8 +3,7 @@ package engineer.trustmeimansoftware.adlib.jsinterface
 import android.util.Log
 import android.webkit.JavascriptInterface
 import androidx.appcompat.app.AppCompatActivity
-import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 
 /**

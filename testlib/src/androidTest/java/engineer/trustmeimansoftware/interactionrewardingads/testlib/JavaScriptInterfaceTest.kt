@@ -3,7 +3,7 @@ package engineer.trustmeimansoftware.interactionrewardingads.testlib
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.core.app.ActivityScenario
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
 import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
@@ -80,7 +80,7 @@ class JavaScriptInterfaceTest {
         val scenario: ActivityScenario<TestActivity> = ActivityScenario.launch(scenarioIntent)
         scenario.onActivity { activity ->
             val jsBuilder = (activity.adManager?.jsInterfaceBuilder as TestJavaScriptInterfaceBuilder?)!!
-            jsBuilder.onCloseCb = { jsonStats ->
+            jsBuilder.onCloseCb = { _ ->
                 called = true
                 latch.countDown()
             }

@@ -2,7 +2,7 @@ package engineer.trustmeimansoftware.interactionrewardingads.testlib
 
 import android.annotation.SuppressLint
 import android.util.Log
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.jsinterface.AbstractJavaScriptInterface
 import engineer.trustmeimansoftware.adlib.jsinterface.IJavaScriptInterfaceBuilder
 

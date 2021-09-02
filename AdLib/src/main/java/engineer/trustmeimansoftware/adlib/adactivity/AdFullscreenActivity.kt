@@ -1,8 +1,7 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.adlib.adactivity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,19 +9,17 @@ import android.view.View
 import android.webkit.*
 import android.widget.LinearLayout
 import android.widget.ProgressBar
-import android.widget.TextView
-import com.google.android.material.tabs.TabLayout
+import engineer.trustmeimansoftware.adlib.R
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.reward.RewardItem
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.time.measureTime
 
 /**
  * Activity that handles the display of an InteractionRewardedAd
@@ -178,7 +175,7 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
                 reward ->
                 jsInterface.onStartFunc = {
                     this.runOnUiThread {
-                        webview.evaluateJavascript("InteractionRewardingAds.initLiveReward({rewardAmount: ${reward.amount.toInt()}});") {};
+                        webview.evaluateJavascript("InteractionRewardingAds.initLiveReward({rewardAmount: ${reward.amount.toInt()}, rewardType: \"${reward.type}\"});") {};
                     }
                 }
             }
@@ -234,7 +231,6 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
      */
     override fun finishActivity(stats: ImpressionStats?) {
         try {
-            ad?.fullscreenContentCallback?.onDismissed()
             stats?.let {
                 if(it.hasEarnedReward) {
                     val rewards = ArrayList<RewardItem>()
@@ -246,6 +242,7 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
                 }
                 AdManager.instance?.networkManager?.sendImpressionStats(ad, stats)
             }
+            ad?.fullscreenContentCallback?.onDismissed()
             this.cleanupWebview()
             onFinishData.putExtra("EXTRA_AD_ID", adID)
             setResult(resultCode, onFinishData)

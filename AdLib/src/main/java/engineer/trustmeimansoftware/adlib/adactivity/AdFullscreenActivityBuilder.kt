@@ -1,4 +1,4 @@
-package engineer.trustmeimansoftware.adlib
+package engineer.trustmeimansoftware.adlib.adactivity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 /**
  * creates [AdFullscreenActivity] and received their result
  */
-open class AdFullscreenActivityBuilder(activity: AppCompatActivity) :IAdFullscreenActivityBuilder {
+open class AdFullscreenActivityBuilder(activity: AppCompatActivity) : IAdFullscreenActivityBuilder {
 
     init {
         initialize(activity)

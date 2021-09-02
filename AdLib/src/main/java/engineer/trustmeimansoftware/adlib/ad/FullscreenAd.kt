@@ -2,8 +2,7 @@ package engineer.trustmeimansoftware.adlib.ad
 
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import engineer.trustmeimansoftware.adlib.AdFullscreenActivityBuilder
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
 import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback
 

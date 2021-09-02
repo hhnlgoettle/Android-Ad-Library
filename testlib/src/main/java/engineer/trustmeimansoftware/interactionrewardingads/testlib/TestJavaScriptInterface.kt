@@ -1,7 +1,7 @@
 package engineer.trustmeimansoftware.interactionrewardingads.testlib
 
 import android.webkit.JavascriptInterface
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity
 import engineer.trustmeimansoftware.adlib.jsinterface.AbstractJavaScriptInterface
 
 /**

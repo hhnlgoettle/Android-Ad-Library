@@ -2,7 +2,7 @@ package engineer.trustmeimansoftware.adlib.ad
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.callback.AdLoadCallback
 import kotlinx.coroutines.*
 

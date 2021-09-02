@@ -7,8 +7,8 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
-import engineer.trustmeimansoftware.adlib.AdManager
+import engineer.trustmeimansoftware.adlib.adactivity.AdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.FullscreenAd
 import engineer.trustmeimansoftware.adlib.ad.InteractionRewardedAd
 import engineer.trustmeimansoftware.adlib.callback.FullscreenContentCallback

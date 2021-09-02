@@ -2,8 +2,7 @@ package engineer.trustmeimansoftware.adlib.jsinterface
 
 import android.util.Log
 import android.webkit.JavascriptInterface
-import engineer.trustmeimansoftware.adlib.AdFullscreenActivity
-import engineer.trustmeimansoftware.adlib.IAdFullscreenActivity
+import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity
 
 /**
  * base class for JavaScriptInterface
