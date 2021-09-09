@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="engineer.trustmeimansoftware.interactionrewardingads.testlib">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application>
+    <application
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
         <meta-data android:name="ira_appId" android:value="6123df0155456a00388a9d54" />
         <activity android:name=".TestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>

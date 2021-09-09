@@ -3,11 +3,13 @@ package engineer.trustmeimansoftware.adlib.network
 import engineer.trustmeimansoftware.adlib.manager.AdManager
 import engineer.trustmeimansoftware.adlib.ad.*
 import engineer.trustmeimansoftware.adlib.cache.CacheManager
+import engineer.trustmeimansoftware.adlib.database.impression.ImpressionDbItem
 import engineer.trustmeimansoftware.adlib.stats.ImpressionStats
 import kotlinx.coroutines.*
 import java.io.*
 import java.lang.Exception
 import java.net.URL
+import java.util.concurrent.CountDownLatch
 
 
 /**
@@ -109,17 +111,27 @@ class AdNetworkManager : IAdNetworkManager{
         cb: ((String) -> Unit)?
     ) {
         try {
-            // TODO on network failure cache impression stats
             val scope = CoroutineScope(Dispatchers.IO)
             scope.launch {
                 try {
-                    AdImpressionApi.sendAdImpression(ad!!, impressionStats)
-                } catch (ex: Exception) {
-                    println("error while sending impression stats: "+ex.message)
+                    AdImpressionApi
+                        .sendAdImpression(ad!!, impressionStats)
+                } catch (ex: Throwable) {
+                    // cache impression when request failed
+                    AdManager.instance?.impressionDatabase?.let {
+                        it.impressionDao.insert(
+                            ImpressionDbItem(
+                                ad?.requestResult!!.impressionId,
+                                ImpressionStats.toJSONString(impressionStats),
+                                false
+                            )
+                        )
+                    }
                 }
+                cb?.invoke("done")
             }
         } catch(throwable: Throwable) {
-            println("error while sending impression stats: "+throwable.message)
+            println("caught throwable: "+throwable.message)
         }
     }
 

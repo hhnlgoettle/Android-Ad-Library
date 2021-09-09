@@ -7,6 +7,8 @@ import engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivityBuilde
 import engineer.trustmeimansoftware.adlib.cache.CacheManager
 import engineer.trustmeimansoftware.adlib.cache.ICacheManager
 import engineer.trustmeimansoftware.adlib.cache.OfflineCacheManager
+import engineer.trustmeimansoftware.adlib.database.impression.ImpressionDatabase
+import engineer.trustmeimansoftware.adlib.database.impression.getDatabase
 import engineer.trustmeimansoftware.adlib.jsinterface.IJavaScriptInterfaceBuilder
 import engineer.trustmeimansoftware.adlib.jsinterface.JavaScriptInterfaceBuilder
 import engineer.trustmeimansoftware.adlib.network.AdNetworkManager
@@ -14,6 +16,7 @@ import engineer.trustmeimansoftware.adlib.network.IAdNetworkManager
 import engineer.trustmeimansoftware.adlib.network.OfflineAdNetworkManager
 import engineer.trustmeimansoftware.adlib.registry.AdRegistry
 import engineer.trustmeimansoftware.adlib.util.AppId
+import engineer.trustmeimansoftware.adlib.worker.enqueueUploadImpressionWorkerToWorkManager
 
 /**
  * initializes relevant objects and stores references to them
@@ -50,7 +53,15 @@ class AdManager: IAdManager {
     override var networkManager: IAdNetworkManager? = null
 
 
+    /**
+     * configuration
+     */
     override var config: AdManagerConfig = AdManagerConfig.getDefault()
+
+    /**
+     * database for impressions
+     */
+    override var impressionDatabase: ImpressionDatabase? = null
 
 
     /**
@@ -77,11 +88,14 @@ class AdManager: IAdManager {
         }
         activity?.let {
             adFullscreenActivityBuilder = AdFullscreenActivityBuilder(activity)
+            impressionDatabase = getDatabase(it.application)
+            enqueueUploadImpressionWorkerToWorkManager(it.applicationContext)
         }
         adRegistry = AdRegistry()
         jsInterfaceBuilder = JavaScriptInterfaceBuilder()
         networkManager = if(buildOpts.offlineMode) OfflineAdNetworkManager() else AdNetworkManager()
         cacheManager = if(buildOpts.offlineMode) OfflineCacheManager() else CacheManager()
+
         if(buildOpts.testMode) config = AdManagerConfig.getTestConfig()
     }
 
