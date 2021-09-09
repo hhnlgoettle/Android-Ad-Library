@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "0f2d768d8e75e807fdec06e7474d4796",
+    "entities": [
+      {
+        "tableName": "ImpressionDbItem",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`impressionId` TEXT NOT NULL, `data` TEXT NOT NULL, `isSent` INTEGER NOT NULL, PRIMARY KEY(`impressionId`))",
+        "fields": [
+          {
+            "fieldPath": "impressionId",
+            "columnName": "impressionId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "data",
+            "columnName": "data",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isSent",
+            "columnName": "isSent",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "impressionId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0f2d768d8e75e807fdec06e7474d4796')"
+    ]
+  }
+}
