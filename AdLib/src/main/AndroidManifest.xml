@@ -2,4 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="engineer.trustmeimansoftware.adlib">
 
+    <application>
+        <activity
+            android:name=".adactivity.AdFullscreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+    </application>
+
 </manifest>

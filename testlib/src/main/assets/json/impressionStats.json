@@ -1,0 +1,58 @@
+{
+  "hasEarnedReward": true,
+  "duration": 3412,
+  "desiredDuration": 2500,
+  "desiredInteractionCount": 5,
+  "allInteractions": [
+    {
+      "timestamp": 1,
+      "posX": 12,
+      "posY": 34,
+      "target": null
+    },
+    {
+      "timestamp": 355,
+      "posX": 12,
+      "posY": 34,
+      "target": "btn_2"
+    },
+    {
+      "timestamp": 600,
+      "posX": 12,
+      "posY": 34,
+      "target": "btn_3"
+    },
+    {
+      "timestamp": 698,
+      "posX": 12,
+      "posY": 34,
+      "target": "btn_4"
+    },
+    {
+      "timestamp": 1972,
+      "posX": 12,
+      "posY": 34,
+      "target": null
+    }
+  ],
+  "validInteractions": [{
+    "timestamp": 355,
+    "posX": 12,
+    "posY": 34,
+    "target": "btn_2"
+  },
+    {
+      "timestamp": 600,
+      "posX": 12,
+      "posY": 34,
+      "target": "btn_3"
+    },
+    {
+      "timestamp": 698,
+      "posX": 12,
+      "posY": 34,
+      "target": "btn_4"
+    }
+  ],
+  "rewardPercentage": 60
+}
