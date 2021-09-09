@@ -133,6 +133,26 @@ $dokka.location:engineer.trustmeimansoftware.adlib.callback/FullscreenContentCal
 $dokka.location:engineer.trustmeimansoftware.adlib.callback/FullscreenContentCallback/onFailedToShow/#java.lang.Error/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.callback/-fullscreen-content-callback/on-failed-to-show.html
 $dokka.location:engineer.trustmeimansoftware.adlib.callback/OnUserRewardedListener///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.callback/-on-user-rewarded-listener/index.html
 $dokka.location:engineer.trustmeimansoftware.adlib.callback/OnUserRewardedListener/onRewardEarned/#kotlin.Array[engineer.trustmeimansoftware.adlib.reward.RewardItem]/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.callback/-on-user-rewarded-listener/on-reward-earned.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression////PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/index.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression//INSTANCE/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-i-n-s-t-a-n-c-e.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression//getDatabase/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/get-database.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression//getDatabase/#android.content.Context/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/get-database.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/index.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/delete/#engineer.trustmeimansoftware.adlib.database.impression.ImpressionDbItem/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/delete.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/deleteAll/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/delete-all.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/deleteById/#kotlin.String/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/delete-by-id.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/getAll/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/get-all.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/getByImpressionId/#kotlin.String/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/get-by-impression-id.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/getUnsent/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/get-unsent.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDao/insert/#engineer.trustmeimansoftware.adlib.database.impression.ImpressionDbItem/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-dao/insert.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDatabase///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-database/index.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDatabase/ImpressionDatabase/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-database/-impression-database.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDatabase/impressionDao/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-database/impression-dao.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDbItem///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-db-item/index.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDbItem/ImpressionDbItem/#kotlin.String#kotlin.String#kotlin.Boolean/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-db-item/-impression-db-item.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDbItem/data/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-db-item/data.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDbItem/impressionId/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-db-item/impression-id.html
+$dokka.location:engineer.trustmeimansoftware.adlib.database.impression/ImpressionDbItem/isSent/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.database.impression/-impression-db-item/is-sent.html
 $dokka.location:engineer.trustmeimansoftware.adlib.jsinterface////PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.jsinterface/index.html
 $dokka.location:engineer.trustmeimansoftware.adlib.jsinterface/AbstractJavaScriptInterface///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.jsinterface/-abstract-java-script-interface/index.html
 $dokka.location:engineer.trustmeimansoftware.adlib.jsinterface/AbstractJavaScriptInterface/AbstractJavaScriptInterface/#engineer.trustmeimansoftware.adlib.adactivity.IAdFullscreenActivity/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.jsinterface/-abstract-java-script-interface/-abstract-java-script-interface.html
@@ -176,6 +196,7 @@ $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/appId/#/Poi
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/cacheManager/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/cache-manager.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/config/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/config.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/context/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/context.html
+$dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/impressionDatabase/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/impression-database.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/initialize/#androidx.appcompat.app.AppCompatActivity?#engineer.trustmeimansoftware.adlib.manager.AdManagerBuildOpts/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/initialize.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/initialize/#androidx.appcompat.app.AppCompatActivity?/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/initialize.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/AdManager/jsInterfaceBuilder/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-ad-manager/js-interface-builder.html
@@ -201,6 +222,7 @@ $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/appId/#/Po
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/cacheManager/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/cache-manager.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/config/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/config.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/context/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/context.html
+$dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/impressionDatabase/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/impression-database.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/initialize/#androidx.appcompat.app.AppCompatActivity?#engineer.trustmeimansoftware.adlib.manager.AdManagerBuildOpts/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/initialize.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/initialize/#androidx.appcompat.app.AppCompatActivity?/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/initialize.html
 $dokka.location:engineer.trustmeimansoftware.adlib.manager/IAdManager/jsInterfaceBuilder/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.manager/-i-ad-manager/js-interface-builder.html
@@ -277,10 +299,19 @@ $dokka.location:engineer.trustmeimansoftware.adlib.util/UrlBuilder.Companion/adI
 $dokka.location:engineer.trustmeimansoftware.adlib.util/UrlBuilder.Companion/adRequest/#engineer.trustmeimansoftware.adlib.ad.AdRequest/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.util/-url-builder/-companion/ad-request.html
 $dokka.location:engineer.trustmeimansoftware.adlib.util/UrlBuilder///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.util/-url-builder/index.html
 $dokka.location:engineer.trustmeimansoftware.adlib.util/UrlBuilder/UrlBuilder/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.util/-url-builder/-url-builder.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker////PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/index.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker//BAD_REQUEST/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/-b-a-d_-r-e-q-u-e-s-t.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker//CONFLICT/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/-c-o-n-f-l-i-c-t.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker//NOT_FOUND/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/-n-o-t_-f-o-u-n-d.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker//enqueueUploadImpressionWorkerToWorkManager/#android.content.Context/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/enqueue-upload-impression-worker-to-work-manager.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker/UploadImpressionWorker///PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/-upload-impression-worker/index.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker/UploadImpressionWorker/UploadImpressionWorker/#android.content.Context#androidx.work.WorkerParameters/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/-upload-impression-worker/-upload-impression-worker.html
+$dokka.location:engineer.trustmeimansoftware.adlib.worker/UploadImpressionWorker/doWork/#/PointingToDeclaration/-ad-lib/engineer.trustmeimansoftware.adlib.worker/-upload-impression-worker/do-work.html
 engineer.trustmeimansoftware.adlib.ad
 engineer.trustmeimansoftware.adlib.adactivity
 engineer.trustmeimansoftware.adlib.cache
 engineer.trustmeimansoftware.adlib.callback
+engineer.trustmeimansoftware.adlib.database.impression
 engineer.trustmeimansoftware.adlib.jsinterface
 engineer.trustmeimansoftware.adlib.jsonutil
 engineer.trustmeimansoftware.adlib.manager
@@ -289,4 +320,5 @@ engineer.trustmeimansoftware.adlib.registry
 engineer.trustmeimansoftware.adlib.reward
 engineer.trustmeimansoftware.adlib.stats
 engineer.trustmeimansoftware.adlib.util
+engineer.trustmeimansoftware.adlib.worker
 
