@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadAd() {
         if(interactionRewardedAd == null) {
-            val adRequest: AdRequest = AdRequest.build("6123df5155456a00388a9d5e")
+            val adRequest: AdRequest = AdRequest.build("613b9bc920546900376f6525")
             InteractionRewardedAd.load(this, adRequest, object: AdLoadCallback {
                 override fun onAdLoaded(ad: Ad) {
                     if(ad is InteractionRewardedAd) {

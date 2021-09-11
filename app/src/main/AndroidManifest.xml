@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InteractionRewardingAdsAndroidLib">
-        <meta-data android:name="ira_appId" android:value="6123df0155456a00388a9d54" />
+        <meta-data android:name="ira_appId" android:value="613b99e820546900376f651b" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
