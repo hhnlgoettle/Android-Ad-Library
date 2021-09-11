@@ -160,6 +160,9 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
             // https://stackoverflow.com/questions/38975229/auto-play-video-in-webview
             webview.settings.mediaPlaybackRequiresUserGesture = false
 
+            webview.settings.allowFileAccess = true
+            webview.settings.allowContentAccess = true
+
             if (AdManager.instance?.cacheManager?.existsAdForActivity(this, it.getID()) != true) {
                 ad?.fullscreenContentCallback?.onFailedToShow(Error("ad creative does not exists at path: " + it.path))
                 finishActivityWithError(Error("ad creative does not exists at path: " + it.path))
@@ -213,7 +216,6 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
         val timeUnits = 100
         scope.launch {
             while(infoProgressBar.progress < 100 && infoLayout.visibility == View.VISIBLE) {
-                Log.d("ProgressBar", "update: "+infoProgressBar.progress.toString())
                 try {
                     delay(infoTimeInMillis / timeUnits)
                 } catch (e: Exception) {
@@ -235,8 +237,15 @@ open class AdFullscreenActivity : AppCompatActivity(), IAdFullscreenActivity {
                 if(it.hasEarnedReward) {
                     val rewards = ArrayList<RewardItem>()
                     rewards.add(RewardItem(ad?.rewardType!!, ad?.rewardAmount!!))
-                    it.rewardPercentage?.let { rewardPercentage ->
-                        rewards.add(RewardItem("additionalReward", rewardPercentage.toLong()))
+                    // only ad if rewardPercentage is above 0
+                    if(it.rewardPercentage != null && it.rewardPercentage > 0) {
+                        var type: String = "additionalReward"
+                        var amount: Long = it.rewardPercentage.toLong()
+                        if(ad?.additionalReward != null) {
+                            type = ad!!.additionalReward!!.type
+                            amount = ad!!.additionalReward!!.amount * (it.rewardPercentage / 100L)
+                        }
+                        rewards.add(RewardItem(type, amount, true))
                     }
                     ad?.onUserRewardedListener?.onRewardEarned(rewards.toTypedArray())
                 }
